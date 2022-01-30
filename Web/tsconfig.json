@@ -1,0 +1,36 @@
+{
+  "compileOnSave": false,
+  "extends": "./tsconfig.paths.json",
+  "compilerOptions": {
+    "outDir": "./tscompiled",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
+    "lib": [
+      "es7",
+      "dom"
+    ],
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "noEmit": true,
+    "isolatedModules": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.js",
+    "./src/**/*.jsx",
+    "./src/**/*.vue",
+    "./src/**/*.tsx",
+    "./typings/**/*"
+  ],
+  "exclude": [
+    "./node_modules"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "DocumentDBConnection": "{YOUR_MONGO_DB_CONNECTION_STRING}",
+    "SyncServiceUrl": "{YOUR_API_HOST_BASE_URL}/api/Sync",
+    "StravaAppClientId": "{YOUR_STRAVA_APP_CLIENT_ID}",
+    "StravaAppClientSecret": "{YOUR_STRAVA_APP_CLIENT_SECRET}",
+    "StravaWebhookSubscriptionToken": "{YOUR_STRAVA_WEBHOOK_SUBSCRIPTION_TOKEN}",
+    "AllowedAthletes": "{COMMA_SEPARATED_LIST_OF_STRAVA_ATHLETE_IDS}",
+    "OwnerAthlete": "{YOUR_STRAVA_ATHLETE_ID}"
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*"
+  }
+}

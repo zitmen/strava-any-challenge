@@ -1,0 +1,9 @@
+{
+    "navigationFallback": {
+       "rewrite": "index.html",
+      "exclude": [ "/static/*", "/api/*", "/service-worker.js", "/robots.txt" ]
+    },
+    "mimeTypes": {
+        ".json": "text/json"
+    }
+}

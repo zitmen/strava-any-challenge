@@ -1,0 +1,7 @@
+﻿**/.vs
+**/.vscode
+**/bin
+**/obj
+*.user
+/Android/cert.zip
+/Android/Config.overrides.cs

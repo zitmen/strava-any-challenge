@@ -1,0 +1,20 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "EventGridSyncTopicKeySetting": "{YOUR_EVENT_GRID_SYNC_TOPIC_KEY}",
+    "EventGridSyncTopicUriSetting": "{YOUR_EVENT_GRID_SYNC_TOPIC_URI}",
+    "EventGridRecalculateTopicKeySetting": "{YOUR_EVENT_GRID_RECALCULATE_TOPIC_KEY}",
+    "EventGridRecalculateTopicUriSetting": "{YOUR_EVENT_GRID_RECALCULATE_TOPIC_URI}",
+    "EventGridTriggerAuth": "{YOUR_EVENT_GRID_TRIGGER_AUTH}",
+    "DocumentDBConnection": "{YOUR_MONGO_DB_CONNECTION_STRING}",
+    "StravaAppClientId": "{YOUR_STRAVA_APP_CLIENT_ID}",
+    "StravaAppClientSecret": "{YOUR_STRAVA_APP_CLIENT_SECRET}",
+    "StravaWebhookSubscriptionToken": "{YOUR_STRAVA_WEBHOOK_SUBSCRIPTION_TOKEN}"
+  },
+  "Host": {
+    "LocalHttpPort": 7072,
+    "CORS": "*"
+  }
+}

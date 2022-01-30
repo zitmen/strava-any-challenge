@@ -1,0 +1,77 @@
+name: AnyChallenge App CI/CD
+
+on:
+  push:
+    branches:
+      - master
+  #pull_request:
+  #  types: [opened, synchronize, reopened, closed]
+  #  branches:
+  #    - master
+  workflow_dispatch:
+
+env:
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './Sync'
+  DOTNET_VERSION: '6.0.x'
+
+jobs:
+  build-and-deploy-website:
+#    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Website and API
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        env:
+          REACT_APP_STRAVA_API_CLIENT_ID: ${{ secrets.STRAVA_API_CLIENT_ID }}
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PROUD_STONE_089BB2303 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "/Web"
+          api_location: "/Api"
+          output_location: "build"
+
+  build-and-deploy-sync:
+    runs-on: ubuntu-latest
+    name: Build and Deploy Sync Functions
+    steps:
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@v2
+
+      - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: 'Resolve Project Dependencies Using Dotnet'
+        shell: bash
+        run: |
+          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+          dotnet build --configuration Release --output ./output
+          popd
+
+      - name: 'Run Azure Functions Action'
+        uses: Azure/functions-action@v1
+        id: fa
+        with:
+          app-name: 'any-challenge'
+          slot-name: 'Production'
+          package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_53FE00C60089473EA6B1321352CFCE13 }}
+
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PROUD_STONE_089BB2303 }}
+          action: "close"
