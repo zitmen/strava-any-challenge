@@ -1,0 +1,10 @@
+[
+  {
+    "relation": [ "delegate_permission/common.handle_all_urls" ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "cz.zitmen.anychallenge",
+      "sha256_cert_fingerprints": [ "8E:2C:84:BD:45:0E:CE:11:75:59:5F:5E:CF:C9:06:7C:A5:54:62:D8:F3:80:A4:48:67:20:93:CD:73:73:4A:DA" ]
+    }
+  }
+]
